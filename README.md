@@ -50,17 +50,21 @@ implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
 ## ViewBinding
 
+```
  buildFeatures {
         viewBinding true
     }
+```
 
 
+# Arquitecturas Mobile
 
-# Arquitecturas Movile
-
+## RecyclerView
 
 ![](img/RecyclerViewAdapterDataset.png)
 
+
+## Modelo-Vista-ViewModel
 
 ![](img/MVVM.png)
 
