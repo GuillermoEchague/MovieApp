@@ -1,9 +1,8 @@
-# Desarrollo de APP mobile
+# Desarrollo de APP Mobile
 
 Esta es una aplicación que busca desarrollar varios conceptos y el uso de jetpack junto con arquitectura MVVM.
 
 
-![](img/jetpack.png)
 
 ## Navigation
 
@@ -57,7 +56,7 @@ implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 ```
 
 
-# Arquitecturas Mobile
+# Arquitecturas de Desarrollo Mobile
 
 ## RecyclerView
 
@@ -68,3 +67,6 @@ implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
 ![](img/MVVM.png)
 
+## Android Jetpack
+
+![](img/Jetpack.png)
