@@ -76,3 +76,12 @@ implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 ## Android Jetpack
 
 ![](img/Jetpack.png)
+
+## Codigo en Git
+
+```
+git add .
+git checkout -b room
+git commit -m "Agregado de dependencias"
+git push origin room
+```
