@@ -5,6 +5,7 @@ import com.example.movieapp.data.model.MovieList
 import com.example.movieapp.data.model.toMovieList
 
 class LocalMovieDataSource(private val movieDao: MovieDao) {
+
     suspend fun getUpcomingMovies(): MovieList {
         return movieDao.getAllMovies().filter { it.movie_type == "upcoming" }.toMovieList()
     }
@@ -17,7 +18,7 @@ class LocalMovieDataSource(private val movieDao: MovieDao) {
         return movieDao.getAllMovies().filter { it.movie_type == "popular" }.toMovieList()
     }
 
-    suspend fun saveMovie(movie: MovieEntity){
+    suspend fun saveMovie(movie: MovieEntity) {
         movieDao.saveMovie(movie)
     }
 }

@@ -1,38 +1,42 @@
 package com.example.movieapp.data.model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.IgnoredOnParcel
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Movie(
-    val id: Int = -1,
     val adult: Boolean = false,
     val backdrop_path: String = "",
+    val id: Int = -1,
     val original_title: String = "",
     val original_language: String = "",
     val overview: String = "",
     val popularity: Double = -1.0,
     val poster_path: String = "",
-    val release_date: String ="",
+    val release_date: String = "",
     val title: String = "",
     val video: Boolean = false,
     val vote_average: Double = -1.0,
     val vote_count: Int = -1,
-    val movie_type: String = ""
-)
+    var movie_type: String = ""
+): Parcelable
 
 data class MovieList(val results: List<Movie> = listOf())
 
-//Room
+// Room
 
-@Entity
+@Entity (tableName = "movieEntity")
 data class MovieEntity(
-    @PrimaryKey
-    val id: Int = -1,
     @ColumnInfo(name = "adult")
     val adult: Boolean = false,
     @ColumnInfo(name = "backdrop_path")
     val backdrop_path: String = "",
+    @PrimaryKey
+    val id: Int = -1,
     @ColumnInfo(name = "original_title")
     val original_title: String = "",
     @ColumnInfo(name = "original_language")
@@ -54,21 +58,37 @@ data class MovieEntity(
     @ColumnInfo(name = "vote_count")
     val vote_count: Int = -1,
     @ColumnInfo(name = "movie_type")
-    val movie_type: String = ""
+    var movie_type: String = ""
 )
 
-fun List<MovieEntity>.toMovieList(): MovieList{
+fun List<MovieEntity>.toMovieList(): MovieList {
     val resultList = mutableListOf<Movie>()
-    this.forEach {movieEntity->
+    this.forEach { movieEntity ->
         resultList.add(movieEntity.toMovie())
     }
     return MovieList(resultList)
 }
 
 fun MovieEntity.toMovie(): Movie = Movie(
-    this.id,
     this.adult,
     this.backdrop_path,
+    this.id,
+    this.original_title,
+    this.original_language,
+    this.overview,
+    this.popularity,
+    this.poster_path,
+    this.release_date,
+    this.title,
+    this.video,
+    this.vote_average,
+    this.vote_count
+)
+
+fun Movie.toMovieEntity(movieType: String): MovieEntity = MovieEntity(
+    this.adult,
+    this.backdrop_path,
+    this.id,
     this.original_title,
     this.original_language,
     this.overview,
@@ -79,6 +99,5 @@ fun MovieEntity.toMovie(): Movie = Movie(
     this.video,
     this.vote_average,
     this.vote_count,
-    this.movie_type
-
+    movie_type = movieType
 )
